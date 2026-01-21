@@ -1,3 +1,28 @@
+# Reporte Financiero - Crecimiento y Acumulados (YTD)
+**Reto 7: The Financial Analyst Protocol**  
+Diplomado en Gestión de Datos 2026 | SQL Avanzado (OLAP)
+
+---
+
+## Objetivo
+Construir una **consulta SQL única** usando **CTEs** y **Window Functions** para transformar datos crudos en un reporte financiero con:
+
+- Venta mensual
+- Venta del mes anterior (LAG)
+- Crecimiento MoM (%)
+- Acumulado YTD (reinicia al cambiar de año)
+
+---
+
+## Fuente de datos
+Tabla: `dbo.raw_sales_dump`  
+Columnas principales: `ID_Transaccion, Fecha_Venta, Cliente, Producto, Categoria, Sucursal, Cantidad, Precio_Unitario, Descuento`
+
+---
+
+## Consulta SQL Final (CTEs + Window Functions)
+
+```sql
 WITH CleanData AS (
     SELECT
         UPPER(LTRIM(RTRIM(Cliente))) AS Cliente,
@@ -5,6 +30,7 @@ WITH CleanData AS (
         CAST(Precio_Unitario AS DECIMAL(18,4)) AS Precio_Unitario,
         CAST(Descuento AS DECIMAL(18,4))       AS Descuento,
 
+        -- Total_Venta = Cantidad * Precio_Unitario * (1 - Descuento)
         CAST(Cantidad AS DECIMAL(18,4)) * CAST(Precio_Unitario AS DECIMAL(18,4)) * (1 - CAST(Descuento AS DECIMAL(18,4))) AS Total_Venta,
 
         YEAR(TRY_CONVERT(date, Fecha_Venta, 23))  AS Anio,
@@ -41,9 +67,10 @@ SELECT
 FROM MonthlySales
 ORDER BY Anio, Mes;
 
+## Evidencia del reinicio del acumulado (YTD) al cambiar de año
 
+La siguiente captura muestra claramente que el Acumulado_YTD se reinicia al pasar de diciembre a enero (cambio de año).
 
-
-
+![alt text](image.png)
 
 
