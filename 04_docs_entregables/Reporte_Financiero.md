@@ -66,6 +66,7 @@ SELECT
     ) AS Acumulado_YTD
 FROM MonthlySales
 ORDER BY Anio, Mes;
+```
 
 ## Evidencia del reinicio del acumulado (YTD) al cambiar de año
 
