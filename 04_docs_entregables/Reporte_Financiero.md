@@ -69,8 +69,8 @@ ORDER BY Anio, Mes;
 
 ## Evidencia del reinicio del acumulado (YTD) al cambiar de año
 
-La siguiente captura muestra claramente que el Acumulado_YTD se reinicia al pasar de diciembre a enero (cambio de año).
+La siguiente captura muestra claramente que el Acumulado_YTD se reinicia al pasar de diciembre a enero (cambio de año)
 
 ![alt text](image.png)
 
-
+![alt text](image-1.png)
