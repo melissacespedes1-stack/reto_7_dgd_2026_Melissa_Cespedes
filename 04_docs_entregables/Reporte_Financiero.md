@@ -1,4 +1,5 @@
 # Reporte Financiero - Crecimiento y Acumulados (YTD)
+# **Presentado por: Ingrid Melissa Céspedes Díaz**
 **Reto 7: The Financial Analyst Protocol**  
 Diplomado en Gestión de Datos 2026 | SQL Avanzado (OLAP)
 
